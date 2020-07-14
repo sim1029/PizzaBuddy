@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
-class Shift {
-    
+class Shift: Object {
+    let deliveries = List<Delivery>()
+    @objc dynamic var timeWorked = 0
 }

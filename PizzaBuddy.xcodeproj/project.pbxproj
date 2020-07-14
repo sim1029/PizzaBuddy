@@ -24,6 +24,8 @@
 		374CC33E24B7A50100B239C7 /* DeliveriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */; };
 		374CC34024B7A50D00B239C7 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */; };
 		374CC34224B7A5C900B239C7 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC34124B7A5C900B239C7 /* Shift.swift */; };
+		374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC34324B7A87C00B239C7 /* Delivery.swift */; };
+		3769030D24BC0EA4009C238A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3769030C24BC0EA4009C238A /* GoogleService-Info.plist */; };
 		37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6F01824B3C5C70038154A /* MapViewController.swift */; };
 		5306A3EA5748EAF2F09A8C20 /* Pods_PizzaBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FB323D966D40E8317CE4FF /* Pods_PizzaBuddyTests.framework */; };
 		872755C0510AB84AA762D023 /* Pods_PizzaBuddy_PizzaBuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4B29A857696C8CAEBC222 /* Pods_PizzaBuddy_PizzaBuddyUITests.framework */; };
@@ -70,6 +72,8 @@
 		374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesViewController.swift; sourceTree = "<group>"; };
 		374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		374CC34124B7A5C900B239C7 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
+		374CC34324B7A87C00B239C7 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
+		3769030C24BC0EA4009C238A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37F6F01824B3C5C70038154A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		5E4B0867D5B460E07C65438B /* Pods_PizzaBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A30138AE84E6189A3AE0897 /* Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-PizzaBuddy-PizzaBuddyUITests/Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +155,7 @@
 				374CC33824B7A41A00B239C7 /* Controllers */,
 				370B7A8524AFBA5C00241A51 /* Assets.xcassets */,
 				370B7A8A24AFBA5C00241A51 /* Info.plist */,
+				3769030C24BC0EA4009C238A /* GoogleService-Info.plist */,
 				370B7AB024AFBFCC00241A51 /* Resources */,
 			);
 			path = PizzaBuddy;
@@ -210,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				374CC34124B7A5C900B239C7 /* Shift.swift */,
+				374CC34324B7A87C00B239C7 /* Delivery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				370B7A8424AFBA5B00241A51 /* Main.storyboard in Resources */,
 				370B7AB824B0DEED00241A51 /* LargeButtonAsset 2.svg in Resources */,
 				370B7AB624B0DE7900241A51 /* pizza.svg in Resources */,
+				3769030D24BC0EA4009C238A /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +520,7 @@
 				370B7A7D24AFBA5B00241A51 /* AppDelegate.swift in Sources */,
 				370B7A7F24AFBA5B00241A51 /* SceneDelegate.swift in Sources */,
 				37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */,
+				374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

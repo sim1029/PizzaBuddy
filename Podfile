@@ -9,6 +9,8 @@ target 'PizzaBuddy' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'RealmSwift'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
 
   target 'PizzaBuddyTests' do
     inherit! :search_paths
