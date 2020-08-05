@@ -11,6 +11,9 @@ target 'PizzaBuddy' do
   pod 'RealmSwift'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  # Optionally, include the Swift extensions if you're using Swift.
+  pod 'FirebaseFirestoreSwift'
 
   target 'PizzaBuddyTests' do
     inherit! :search_paths

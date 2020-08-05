@@ -25,8 +25,12 @@
 		374CC34024B7A50D00B239C7 /* DeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */; };
 		374CC34224B7A5C900B239C7 /* Shift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC34124B7A5C900B239C7 /* Shift.swift */; };
 		374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC34324B7A87C00B239C7 /* Delivery.swift */; };
-		3769030D24BC0EA4009C238A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3769030C24BC0EA4009C238A /* GoogleService-Info.plist */; };
+		3759469D24BE25D500BAAB1A /* SignUpFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759469C24BE25D500BAAB1A /* SignUpFormViewController.swift */; };
+		3759469F24BE25E600BAAB1A /* LoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */; };
+		37D74DC424CCCC56006DD6C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */; };
+		37D74DC624CE6443006DD6C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D74DC524CE6443006DD6C5 /* MapKit.framework */; };
 		37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6F01824B3C5C70038154A /* MapViewController.swift */; };
+		37FC45D224C479080047C160 /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FC45D124C479080047C160 /* NewAddressViewController.swift */; };
 		5306A3EA5748EAF2F09A8C20 /* Pods_PizzaBuddyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9FB323D966D40E8317CE4FF /* Pods_PizzaBuddyTests.framework */; };
 		872755C0510AB84AA762D023 /* Pods_PizzaBuddy_PizzaBuddyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD4B29A857696C8CAEBC222 /* Pods_PizzaBuddy_PizzaBuddyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,8 +77,12 @@
 		374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewController.swift; sourceTree = "<group>"; };
 		374CC34124B7A5C900B239C7 /* Shift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shift.swift; sourceTree = "<group>"; };
 		374CC34324B7A87C00B239C7 /* Delivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delivery.swift; sourceTree = "<group>"; };
-		3769030C24BC0EA4009C238A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3759469C24BE25D500BAAB1A /* SignUpFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpFormViewController.swift; sourceTree = "<group>"; };
+		3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewController.swift; sourceTree = "<group>"; };
+		37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		37D74DC524CE6443006DD6C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		37F6F01824B3C5C70038154A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		37FC45D124C479080047C160 /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
 		5E4B0867D5B460E07C65438B /* Pods_PizzaBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PizzaBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A30138AE84E6189A3AE0897 /* Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig"; path = "Target Support Files/Pods-PizzaBuddy-PizzaBuddyUITests/Pods-PizzaBuddy-PizzaBuddyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		6E323FAE7DD281037B60EA4F /* Pods-PizzaBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaBuddy.debug.xcconfig"; path = "Target Support Files/Pods-PizzaBuddy/Pods-PizzaBuddy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D74DC624CE6443006DD6C5 /* MapKit.framework in Frameworks */,
 				2234245C3AAC8AE60147267A /* Pods_PizzaBuddy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +125,7 @@
 		23826DCD7A652E6479492B2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37D74DC524CE6443006DD6C5 /* MapKit.framework */,
 				5E4B0867D5B460E07C65438B /* Pods_PizzaBuddy.framework */,
 				9AD4B29A857696C8CAEBC222 /* Pods_PizzaBuddy_PizzaBuddyUITests.framework */,
 				F9FB323D966D40E8317CE4FF /* Pods_PizzaBuddyTests.framework */,
@@ -154,8 +164,8 @@
 				374CC33924B7A42600B239C7 /* Views */,
 				374CC33824B7A41A00B239C7 /* Controllers */,
 				370B7A8524AFBA5C00241A51 /* Assets.xcassets */,
+				37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */,
 				370B7A8A24AFBA5C00241A51 /* Info.plist */,
-				3769030C24BC0EA4009C238A /* GoogleService-Info.plist */,
 				370B7AB024AFBFCC00241A51 /* Resources */,
 			);
 			path = PizzaBuddy;
@@ -198,6 +208,9 @@
 				374CC33B24B7A4B200B239C7 /* ProfileViewController.swift */,
 				374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */,
 				374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */,
+				3759469C24BE25D500BAAB1A /* SignUpFormViewController.swift */,
+				3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */,
+				37FC45D124C479080047C160 /* NewAddressViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -349,7 +362,7 @@
 				370B7A8424AFBA5B00241A51 /* Main.storyboard in Resources */,
 				370B7AB824B0DEED00241A51 /* LargeButtonAsset 2.svg in Resources */,
 				370B7AB624B0DE7900241A51 /* pizza.svg in Resources */,
-				3769030D24BC0EA4009C238A /* GoogleService-Info.plist in Resources */,
+				37D74DC424CCCC56006DD6C5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +524,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3759469F24BE25E600BAAB1A /* LoginFormViewController.swift in Sources */,
+				3759469D24BE25D500BAAB1A /* SignUpFormViewController.swift in Sources */,
 				374CC33C24B7A4B200B239C7 /* ProfileViewController.swift in Sources */,
 				370B7A8124AFBA5B00241A51 /* HomeViewController.swift in Sources */,
 				374CC34024B7A50D00B239C7 /* DeliveryViewController.swift in Sources */,
@@ -521,6 +536,7 @@
 				370B7A7F24AFBA5B00241A51 /* SceneDelegate.swift in Sources */,
 				37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */,
 				374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */,
+				37FC45D224C479080047C160 /* NewAddressViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

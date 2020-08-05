@@ -14,4 +14,5 @@ class Delivery: Object {
     @objc dynamic var deliveryTime = 0
     @objc dynamic var visits = 0
     @objc dynamic var notes = ""
+    @objc dynamic var complete = false
 }
