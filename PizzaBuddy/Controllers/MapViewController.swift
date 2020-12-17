@@ -9,9 +9,27 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate {
-
+class MapViewController: UIViewController, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrentDeliveryCell", for: indexPath)
+        cell.textLabel?.text = "Penis"
+        return cell
+    }
+    
+//    override func viewWillLayoutSubviews() {
+//        super.updateViewConstraints()
+//        self.tableViewHeight?.constant = self.currentDeliveries.contentSize.height
+//    }
+    
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var currentDeliveries: UITableView!
     
     let request = MKDirections.Request()
     
@@ -79,6 +97,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return polylineRenderer
     }
 
+    @IBAction func showDeliveries(_ sender: UIButton) {
+        currentDeliveries.isHidden.toggle()
+        backButton.isHidden.toggle()
+    }
+    
     /*
     // MARK: - Navigation
 

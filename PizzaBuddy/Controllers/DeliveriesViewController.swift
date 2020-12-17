@@ -24,8 +24,6 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return deliveries?.count ?? 1
     }
@@ -38,7 +36,7 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         //            cell.backgroundColor =
                     cell.textLabel?.textColor = UIColor.white
                 }
-                return cell
+        return cell
     }
 
     
