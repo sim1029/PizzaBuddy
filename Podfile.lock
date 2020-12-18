@@ -349,6 +349,7 @@ PODS:
   - Realm/Headers (5.2.0)
   - RealmSwift (5.2.0):
     - Realm (= 5.2.0)
+  - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -358,6 +359,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - RealmSwift
+  - SwipeCellKit
 
 SPEC REPOS:
   trunk:
@@ -386,6 +388,7 @@ SPEC REPOS:
     - PromisesObjC
     - Realm
     - RealmSwift
+    - SwipeCellKit
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -413,7 +416,8 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Realm: f749c723e272f08fdf1939af5e61d2bd09b203e8
   RealmSwift: bf0ab78b52c5bafba8b3ad73be8dfb4c1ea5cf01
+  SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 76139a73f67e6e3da7537daf4718efd54884d9c9
+PODFILE CHECKSUM: d0f583d34747044017aaa3af394b8ee603d52286
 
 COCOAPODS: 1.9.2
