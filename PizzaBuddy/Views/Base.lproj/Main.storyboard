@@ -403,6 +403,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="Zlf-gZ-kvw" kind="presentation" identifier="toDelivery" animates="NO" modalPresentationStyle="fullScreen" id="icc-s2-X7f"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -422,7 +425,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Deliveries (##)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="PAV-VC-oxU">
-                                <rect key="frame" x="95" y="8" width="185.5" height="26"/>
+                                <rect key="frame" x="101" y="8" width="173.5" height="26"/>
                                 <fontDescription key="fontDescription" name="VarelaRound-Regular" family="Varela Round" pointSize="22"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -469,6 +472,9 @@
                                     <constraint firstAttribute="height" constant="37" id="gBS-QA-mkf"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="backAsset 16"/>
+                                <connections>
+                                    <segue destination="x5P-0O-Ln6" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="xkj-ZO-mB4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePc-Tz-hfa">
                                 <rect key="frame" x="292" y="0.0" width="83" height="60"/>
@@ -593,6 +599,15 @@
                             <constraint firstItem="lmM-ZP-ZXP" firstAttribute="centerX" secondItem="rh7-gj-57r" secondAttribute="centerX" id="xkw-To-9Gt"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="1jp-UC-Vo9"/>
+                    <connections>
+                        <outlet property="address" destination="twh-2Q-QlD" id="MKc-3M-6xR"/>
+                        <outlet property="averageDeliveryTime" destination="r5K-bI-Rkj" id="wZ3-cO-eJl"/>
+                        <outlet property="notes" destination="9Ld-cq-cfp" id="uzA-qg-gwr"/>
+                        <outlet property="tip" destination="6sg-8i-lZ5" id="H6n-Dx-lnl"/>
+                        <outlet property="tipRating" destination="ndz-Gh-0gA" id="iRH-AG-Pvs"/>
+                        <outlet property="visits" destination="LVk-ad-HFD" id="mpb-C8-YGL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hPl-qb-QRs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1205,10 +1220,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="f2E-gn-sHV"/>
+        <segue reference="icc-s2-X7f"/>
         <segue reference="riW-pU-czO"/>
         <segue reference="KLl-71-Fbq"/>
-        <segue reference="g2O-PL-iJo"/>
+        <segue reference="3xU-A8-wRG"/>
+        <segue reference="xkj-ZO-mB4"/>
         <segue reference="GZc-El-iWY"/>
     </inferredMetricsTieBreakers>
     <resources>

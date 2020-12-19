@@ -131,23 +131,6 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
                     return [completeAction]
                 }
             }
-//            let completeAction = SwipeAction(style: .default, title: "Complete") { (action, indexPath) in
-//                if let delivery = self.deliveries?[indexPath.row]{
-//                    do {
-//                        try self.realm.write{
-//                            delivery.complete = true
-//                        }
-//                        self.loadDeliveries()
-//                    } catch {
-//                        print("Error saving folds \(error)")
-//                    }
-//                }
-//            }
-//
-//            completeAction.image = UIImage(named: "complete")
-//            completeAction.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
-            
-//            return [completeAction]
         }
         return nil
     }
@@ -184,7 +167,6 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func unwindFromAddressView(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
         loadDeliveries()
         // Use data from the view controller which initiated the unwind segue
     }
@@ -196,15 +178,17 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         numberOfDeliveriesLabel.text = baseString
     }
     
-    /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toDelivery"{
+            let destinationVC = segue.destination as! DeliveryViewController
+            if let indexPath = tableView.indexPathForSelectedRow{
+                destinationVC.selectedDelivery = deliveries?[indexPath.row]
+            }
+        }
     }
-    */
 
 }
 

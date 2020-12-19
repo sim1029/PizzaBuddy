@@ -6,16 +6,35 @@
 //
 
 import UIKit
+import RealmSwift
 
-class DeliveryViewController: UIViewController {
+class DeliveryViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var tipRating: UILabel!
+    @IBOutlet weak var tip: UILabel!
+    @IBOutlet weak var visits: UILabel!
+    @IBOutlet weak var averageDeliveryTime: UILabel!
+    @IBOutlet weak var notes: UILabel!
+    
+    let realm = try! Realm()
+    
+    var selectedDelivery : Delivery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+        if let delivery = selectedDelivery {
+            loadDelivery(delivery)
+        }
     }
     
-
+    func loadDelivery(_ delivery: Delivery) {
+        address?.text = delivery.address
+        visits?.text = String(delivery.visits) + " Visits"
+        notes?.text = delivery.notes
+    }
+    
     /*
     // MARK: - Navigation
 
