@@ -162,6 +162,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="clockDisplay" destination="kaR-7i-6LF" id="qVt-g4-j8a"/>
+                        <outlet property="startButton" destination="cvZ-1S-KLk" id="wMD-L6-Zuu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -243,7 +244,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Base Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nni-Lo-mz1">
-                                <rect key="frame" x="16" y="71" width="134" height="27"/>
+                                <rect key="frame" x="16" y="71" width="131.5" height="26.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Nni-Lo-mz1" secondAttribute="height" multiplier="134:27" id="z3D-c8-EJm"/>
                                 </constraints>
@@ -252,7 +253,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Minimum Wage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nI9-7b-rzz">
-                                <rect key="frame" x="16" y="126" width="205" height="27"/>
+                                <rect key="frame" x="16" y="123" width="197.5" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="nI9-7b-rzz" secondAttribute="height" multiplier="205:27" id="5j8-Ak-yd1"/>
                                 </constraints>
@@ -261,7 +262,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UoH-Ez-6wO">
-                                <rect key="frame" x="158" y="66" width="89" height="43"/>
+                                <rect key="frame" x="155.5" y="66" width="83.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UoH-Ez-6wO" secondAttribute="height" multiplier="27:13" id="XpX-bN-ifN"/>
                                 </constraints>
@@ -270,7 +271,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gM1-R6-Hi8">
-                                <rect key="frame" x="229" y="121" width="89" height="39.5"/>
+                                <rect key="frame" x="221.5" y="118" width="83.5" height="37.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="gM1-R6-Hi8" secondAttribute="height" multiplier="9:4" id="HdC-Jj-0Mp"/>
                                 </constraints>
@@ -425,7 +426,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Deliveries (##)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="PAV-VC-oxU">
-                                <rect key="frame" x="101" y="8" width="173.5" height="26"/>
+                                <rect key="frame" x="95" y="8" width="185.5" height="26"/>
                                 <fontDescription key="fontDescription" name="VarelaRound-Regular" family="Varela Round" pointSize="22"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -661,9 +662,6 @@
                                                 <state key="normal" title="Login with E-mail" backgroundImage="LargeButtonAsset 2">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="UdA-Pu-1bq" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="riW-pU-czO"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -680,9 +678,6 @@
                                     <constraint firstAttribute="height" constant="37" id="NjL-eH-GUc"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="backAsset 16"/>
-                                <connections>
-                                    <segue destination="gOE-45-iip" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="3xU-A8-wRG"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ghY-bQ-uxi"/>
@@ -930,9 +925,6 @@
                                     <constraint firstAttribute="width" constant="24" id="pXu-W8-UmY"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="backAsset 16"/>
-                                <connections>
-                                    <segue destination="gOE-45-iip" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="iye-x5-x44"/>
-                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="6qX-rb-eud">
                                 <rect key="frame" x="12" y="0.0" width="351" height="645"/>
@@ -974,9 +966,6 @@
                                                 <state key="normal" title="Sign up with E-mail" backgroundImage="LargeButtonAsset 2">
                                                     <color key="titleColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
-                                                <connections>
-                                                    <segue destination="ijT-zZ-i6V" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="KLl-71-Fbq"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -1220,11 +1209,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="icc-s2-X7f"/>
-        <segue reference="riW-pU-czO"/>
-        <segue reference="KLl-71-Fbq"/>
-        <segue reference="3xU-A8-wRG"/>
-        <segue reference="xkj-ZO-mB4"/>
+        <segue reference="g2O-PL-iJo"/>
+        <segue reference="f2E-gn-sHV"/>
         <segue reference="GZc-El-iWY"/>
     </inferredMetricsTieBreakers>
     <resources>

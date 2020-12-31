@@ -11,4 +11,6 @@ import RealmSwift
 class Shift: Object {
     let deliveries = List<Delivery>()
     @objc dynamic var timeWorked = 0
+    @objc dynamic var working = false
+//    @objc dynamic var tips = 0.0
 }
