@@ -7,10 +7,14 @@
 
 import UIKit
 import RealmSwift
+import CoreFoundation
 
 class HomeViewController: UIViewController {
     
     let realm = try! Realm()
+    
+    var timer = Timer()
+    var currentTime = CFAbsoluteTimeGetCurrent()
     
     // Hold current shift
     var shift: Shift?
@@ -22,10 +26,11 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var clockDisplay: UILabel!
     
     // Used with the timer
-    var seconds = 0
+    var counter = 0.0
+    var lastSavedTime = 0.0
     
     // Is the current shift acive?
-    var working = false
+    var isWorking = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,105 +39,101 @@ class HomeViewController: UIViewController {
         // Check if there are no shifts created yet
         if shifts?.isEmpty == true {
             shift = Shift()
-        } else {
-            // Set current shift to the last shift created
-            shift = shifts!.last
-            // Check if still working
-            working = shift?.working ?? false
-            if working == true{
-                working.toggle()
-                startStopPressed(startButton)
-            }
-        }
-//        print(Realm.Configuration.defaultConfiguration.fileURL)
-    }
-    
-    @IBAction func startStopPressed(_ sender: UIButton) {
-        working.toggle()
-        if working == true {
-            sender.setBackgroundImage(UIImage(named: "pizzaBikeStopAsset 21"), for: .normal)
-            seconds = shift?.timeWorked ?? 0
-        } else {
-            sender.setBackgroundImage(UIImage(named: "pizzaBikeAsset 20"), for: .normal)
-            do{
+            do {
                 try realm.write {
-                    shift?.working = false
-                    shift?.timeWorked = seconds
-                    seconds = 0
-                    shift = Shift()
                     realm.add(shift!)
                 }
             } catch {
                 print("Error saving Shift: \(error)")
             }
-        }
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-
-            self.seconds += 1
-            
-            self.clockDisplay.text = self.formatClock(time: self.seconds)
-
-            if self.working != true {
-                timer.invalidate()
-                self.clockDisplay.text = self.formatClock(time: 0)
+        } else {
+            // Set current shift to the last shift created
+            shift = shifts!.last
+            // Check if still working
+            isWorking = shift?.working ?? false
+            counter = shift?.timeWorked ?? 0.0
+            lastSavedTime = shift?.lastSavedTime ?? 0.0
+            if isWorking == true{
+                startButton.setBackgroundImage(UIImage(named: "pizzaBikeStopAsset 21"), for: .normal)
+                runTimer()
+                counter += currentTime - lastSavedTime
+                timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
             }
-            
         }
+//        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
+    @IBAction func startStopPressed(_ sender: UIButton) {
+        if isWorking{
+            timer.invalidate()
+            isWorking = false
+            sender.setBackgroundImage(UIImage(named: "pizzaBikeAsset 20"), for: .normal)
+            saveShift(createNewShift: true)
+            counter = 0.0
+            clockDisplay.text = "00:00:00"
+        } else {
+            isWorking = true
+            sender.setBackgroundImage(UIImage(named: "pizzaBikeStopAsset 21"), for: .normal)
+            // Do something with timer
+            timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(runTimer), userInfo: nil, repeats: true)
+        }
+
+//            let alert = UIAlertController(title: "Confirm Stop", message: "Are you sure you want to end the current shift?", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Shift will end if pressed"), style: .default, handler: { _ in
+//                self.working.toggle()
+//            }))
+//            alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancels the action"), style: .cancel, handler: { _ in
+//            }))
+//            self.present(alert, animated: true) {
+//                <#code#>
+        
+    }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        do {
+    @objc func runTimer() {
+        counter += 0.5
+        
+        let flooredCounter = Int(floor(counter))
+        
+        let hour = flooredCounter / 3600
+        var hourString = "\(hour)"
+        if hour < 10 {
+            hourString = "0\(hour)"
+        }
+        
+        let minute = (flooredCounter % 3600) / 60
+        var minuteString = "\(minute)"
+        if minute < 10 {
+            minuteString = "0\(minute)"
+        }
+        
+        let second = (flooredCounter % 3600) % 60
+        var secondString = "\(second)"
+        if second < 10 {
+            secondString = "0\(second)"
+        }
+        
+        clockDisplay.text = "\(hourString):\(minuteString):\(secondString)"
+    }
+    
+    func saveShift(createNewShift: Bool){
+        currentTime = CFAbsoluteTimeGetCurrent()
+        do{
             try realm.write {
-                shift?.timeWorked = seconds
-                shift?.working = working
+                shift?.working = isWorking
+                shift?.timeWorked = counter
+                shift?.lastSavedTime = currentTime
+                if createNewShift {
+                    shift = Shift()
+                    realm.add(shift!)
+                }
             }
         } catch {
-            print("Error saving seconds: \(error)")
+            print("Error saving shift: \(error)")
         }
     }
     
-    func formatClock(time seconds: Int) -> String {
-        var s = seconds
-        var m = 0
-        var h = 0
-        var ss: String
-        var ms: String
-        var hs: String
-        
-        if(s >= 60) {
-            m = s / 60
-            s %= 60
-        }
-        if(m > 60){
-            h = m / 60
-            m %= 60
-        }
-        
-        if(s/10 != 0){
-            ss = ":" + String(s)
-        } else {
-            ss = ":0" + String(s)
-        }
-        
-        if(m/10 != 0){
-            ms = ":" + String(m)
-        } else {
-            ms = ":0" + String(m)
-        }
-        
-        if(h/10 != 0){
-            hs = "" + String(h)
-        } else {
-            hs = "0" + String(h)
-        }
-        
-        return hs + ms + ss
-    }
-    
-    func countSeconds(){
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        saveShift(createNewShift: false)
     }
 
 }
