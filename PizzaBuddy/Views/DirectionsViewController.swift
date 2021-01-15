@@ -90,9 +90,24 @@ class DirectionsViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "Instruction", for: indexPath) as! DeliveryCell
         if let instruction = directions?[indexPath.row]{
             cell.leftLabel.text = instruction
-            cell.graphic.image = UIImage(named: "PizzaSlice")
+            if instruction.contains("destination") {
+                cell.graphic.image = UIImage(named: "PizzaMan")
+            }
+            else if instruction.contains("left"){
+                cell.graphic.image = UIImage(named: "PizzaSlice")?.withHorizontallyFlippedOrientation()
+            }
+            else if instruction.contains("right"){
+                cell.graphic.image = UIImage(named: "PizzaSlice")
+            }
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toCompletion" {
+            let destinationVC = segue.destination as! CompleteDeliveryViewController
+            destinationVC.delivery = stop
+        }
     }
     
 }

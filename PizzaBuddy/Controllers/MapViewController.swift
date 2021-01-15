@@ -49,29 +49,6 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: false)
-//
-//        let cell = tableView.cellForRow(at: indexPath) as! DeliveryCell
-//
-//        if !cell.currentlySelected {
-//
-//            selections += 1
-//
-//            cell.rightLabel.text = "\(selections)"
-//
-//            topLabel?.text = "Select destination #\(selections+1)"
-//
-//            cell.currentlySelected = true
-//        }
-//    }
-    
-    @IBAction func resetPressed(_ sender: UIButton) {
-        tableView.reloadData()
-        selections = 0
-        topLabel?.text = "Select destination #\(selections+1)"
-    }
-    
     func loadDeliveries(){
         shifts = realm.objects(Shift.self)
         currentShift = shifts?.last

@@ -33,6 +33,7 @@ class DeliveryViewController: UIViewController, UITextFieldDelegate {
         address?.text = delivery.address
         visits?.text = String(delivery.visits) + " Visits"
         notes?.text = delivery.notes
+        tip?.text = "$\(delivery.tip) Tip"
     }
     
     /*

@@ -19,6 +19,7 @@
 		370B7AAD24AFBEF900241A51 /* VarelaRound-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 370B7AAC24AFBEF900241A51 /* VarelaRound-Regular.ttf */; };
 		370B7AB624B0DE7900241A51 /* pizza.svg in Resources */ = {isa = PBXBuildFile; fileRef = 370B7AB524B0DE7900241A51 /* pizza.svg */; };
 		370B7AB824B0DEED00241A51 /* LargeButtonAsset 2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 370B7AB724B0DEED00241A51 /* LargeButtonAsset 2.svg */; };
+		371610F125B1FE690012D566 /* CompleteDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371610F025B1FE690012D566 /* CompleteDeliveryViewController.swift */; };
 		374CC33724B7A3F800B239C7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33624B7A3F800B239C7 /* WelcomeViewController.swift */; };
 		374CC33C24B7A4B200B239C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33B24B7A4B200B239C7 /* ProfileViewController.swift */; };
 		374CC33E24B7A50100B239C7 /* DeliveriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */; };
@@ -73,6 +74,7 @@
 		370B7AAC24AFBEF900241A51 /* VarelaRound-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VarelaRound-Regular.ttf"; sourceTree = "<group>"; };
 		370B7AB524B0DE7900241A51 /* pizza.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pizza.svg; sourceTree = "<group>"; };
 		370B7AB724B0DEED00241A51 /* LargeButtonAsset 2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LargeButtonAsset 2.svg"; sourceTree = "<group>"; };
+		371610F025B1FE690012D566 /* CompleteDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDeliveryViewController.swift; sourceTree = "<group>"; };
 		374CC33624B7A3F800B239C7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		374CC33B24B7A4B200B239C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				3759CD1F25A4B2AE008BE731 /* DirectionsViewController.swift */,
+				371610F025B1FE690012D566 /* CompleteDeliveryViewController.swift */,
 				370B7A8024AFBA5B00241A51 /* HomeViewController.swift */,
 				374CC33624B7A3F800B239C7 /* WelcomeViewController.swift */,
 				37F6F01824B3C5C70038154A /* MapViewController.swift */,
@@ -541,6 +544,7 @@
 				374CC34224B7A5C900B239C7 /* Shift.swift in Sources */,
 				374CC33E24B7A50100B239C7 /* DeliveriesViewController.swift in Sources */,
 				370B7A7D24AFBA5B00241A51 /* AppDelegate.swift in Sources */,
+				371610F125B1FE690012D566 /* CompleteDeliveryViewController.swift in Sources */,
 				370B7A7F24AFBA5B00241A51 /* SceneDelegate.swift in Sources */,
 				37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */,
 				374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */,
