@@ -11,6 +11,7 @@ class DeliveryCell: UITableViewCell {
     
     @IBOutlet weak var leftLabel: UILabel!
     @IBOutlet weak var rightLabel: UILabel!
+    @IBOutlet weak var graphic: UIImageView!
     
     var currentlySelected = false
 }

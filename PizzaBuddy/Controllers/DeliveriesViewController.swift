@@ -16,7 +16,9 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let realm = try! Realm()
     
-    var deliveries: Results<Delivery>?
+    var deliveries: List<Delivery>?
+    var shifts: Results<Shift>?
+    var currentShift: Shift?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,23 +28,23 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         if deliveries?.count ?? 0 == 0{
             let newDelivery = Delivery()
-            newDelivery.address = "123 Sample address Ln"
+            newDelivery.address = "160 Brickyard Road"
             newDelivery.notes = "Sample note 1"
             newDelivery.complete = true
             
             let newDelivery1 = Delivery()
-            newDelivery1.address = "231 Sample address Ln"
+            newDelivery1.address = "501 Potomac Ct"
             newDelivery1.notes = "Sample note 2"
             
             let newDelivery2 = Delivery()
-            newDelivery2.address = "312 Sample address Ln"
+            newDelivery2.address = "101 Snowcap Dr"
             newDelivery2.notes = "Sample note 3"
             
             do {
                 try realm.write{
-                    realm.add(newDelivery)
-                    realm.add(newDelivery1)
-                    realm.add(newDelivery2)
+                    currentShift?.deliveries.append(newDelivery)
+                    currentShift?.deliveries.append(newDelivery1)
+                    currentShift?.deliveries.append(newDelivery2)
                 }
             } catch {
                 print("Error saving folds \(error)")
@@ -82,7 +84,7 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         if orientation == .left{
             let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
                 // Update model with deletion
-                if let delivery = self.deliveries?[indexPath.row]{
+                if let delivery = self.currentShift?.deliveries[indexPath.row] {
                     do {
                         try self.realm.write{
                             self.realm.delete(delivery)
@@ -98,7 +100,7 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
             
             return [deleteAction]
         } else{
-            if let delivery = self.deliveries?[indexPath.row]{
+            if let delivery = self.currentShift?.deliveries[indexPath.row] {
                 if delivery.complete{
                     let resetAction = SwipeAction(style: .default, title: "Reset") { (action, indexPath) in
                         do {
@@ -145,23 +147,10 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     //MARK: - TableView Datasource Methods
     
     
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-//        return deliveries?.count ?? 1
-//    }
-//
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath)
-//        if let delivery = deliveries?[indexPath.row]{
-//            cell.textLabel?.text = delivery.address
-//
-////            cell.backgroundColor =
-//            cell.textLabel?.textColor = UIColor.white
-//        }
-//        return cell
-//    }
-    
     func loadDeliveries() {
-        deliveries = realm.objects(Delivery.self)
+        shifts = realm.objects(Shift.self)
+        currentShift = shifts?.last
+        deliveries = currentShift?.deliveries
         updateLabel()
         tableView.reloadData()
     }
@@ -185,7 +174,7 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         if segue.identifier == "toDelivery"{
             let destinationVC = segue.destination as! DeliveryViewController
             if let indexPath = tableView.indexPathForSelectedRow{
-                destinationVC.selectedDelivery = deliveries?[indexPath.row]
+                destinationVC.selectedDelivery = currentShift?.deliveries[indexPath.row]
             }
         }
     }
