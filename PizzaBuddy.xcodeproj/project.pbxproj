@@ -20,6 +20,10 @@
 		370B7AB624B0DE7900241A51 /* pizza.svg in Resources */ = {isa = PBXBuildFile; fileRef = 370B7AB524B0DE7900241A51 /* pizza.svg */; };
 		370B7AB824B0DEED00241A51 /* LargeButtonAsset 2.svg in Resources */ = {isa = PBXBuildFile; fileRef = 370B7AB724B0DEED00241A51 /* LargeButtonAsset 2.svg */; };
 		371610F125B1FE690012D566 /* CompleteDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371610F025B1FE690012D566 /* CompleteDeliveryViewController.swift */; };
+		371610F625B296980012D566 /* MyDeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371610F525B296980012D566 /* MyDeliveryCell.swift */; };
+		371610FB25B340D10012D566 /* PastShiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371610FA25B340D10012D566 /* PastShiftsViewController.swift */; };
+		3716110025B3C3DF0012D566 /* ShiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371610FF25B3C3DF0012D566 /* ShiftViewController.swift */; };
+		3716110525B3D84C0012D566 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716110425B3D84C0012D566 /* Profile.swift */; };
 		374CC33724B7A3F800B239C7 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33624B7A3F800B239C7 /* WelcomeViewController.swift */; };
 		374CC33C24B7A4B200B239C7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33B24B7A4B200B239C7 /* ProfileViewController.swift */; };
 		374CC33E24B7A50100B239C7 /* DeliveriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */; };
@@ -30,6 +34,7 @@
 		3759469F24BE25E600BAAB1A /* LoginFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */; };
 		3759CD1B25A4A942008BE731 /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759CD1A25A4A942008BE731 /* DeliveryCell.swift */; };
 		3759CD2025A4B2AE008BE731 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759CD1F25A4B2AE008BE731 /* DirectionsViewController.swift */; };
+		377A043425D9B6CB0064BA5D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A043325D9B6CB0064BA5D /* Address.swift */; };
 		37D74DC424CCCC56006DD6C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */; };
 		37D74DC624CE6443006DD6C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D74DC524CE6443006DD6C5 /* MapKit.framework */; };
 		37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6F01824B3C5C70038154A /* MapViewController.swift */; };
@@ -75,6 +80,10 @@
 		370B7AB524B0DE7900241A51 /* pizza.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = pizza.svg; sourceTree = "<group>"; };
 		370B7AB724B0DEED00241A51 /* LargeButtonAsset 2.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LargeButtonAsset 2.svg"; sourceTree = "<group>"; };
 		371610F025B1FE690012D566 /* CompleteDeliveryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteDeliveryViewController.swift; sourceTree = "<group>"; };
+		371610F525B296980012D566 /* MyDeliveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDeliveryCell.swift; sourceTree = "<group>"; };
+		371610FA25B340D10012D566 /* PastShiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastShiftsViewController.swift; sourceTree = "<group>"; };
+		371610FF25B3C3DF0012D566 /* ShiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftViewController.swift; sourceTree = "<group>"; };
+		3716110425B3D84C0012D566 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		374CC33624B7A3F800B239C7 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		374CC33B24B7A4B200B239C7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		374CC33D24B7A50100B239C7 /* DeliveriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveriesViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +94,7 @@
 		3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormViewController.swift; sourceTree = "<group>"; };
 		3759CD1A25A4A942008BE731 /* DeliveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeliveryCell.swift; path = PizzaBuddy/Views/DeliveryCell.swift; sourceTree = SOURCE_ROOT; };
 		3759CD1F25A4B2AE008BE731 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = PizzaBuddy/Views/DirectionsViewController.swift; sourceTree = SOURCE_ROOT; };
+		377A043325D9B6CB0064BA5D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37D74DC524CE6443006DD6C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		37F6F01824B3C5C70038154A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +228,9 @@
 				374CC33F24B7A50D00B239C7 /* DeliveryViewController.swift */,
 				3759469C24BE25D500BAAB1A /* SignUpFormViewController.swift */,
 				3759469E24BE25E600BAAB1A /* LoginFormViewController.swift */,
+				371610FF25B3C3DF0012D566 /* ShiftViewController.swift */,
 				37FC45D124C479080047C160 /* NewAddressViewController.swift */,
+				371610FA25B340D10012D566 /* PastShiftsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -236,8 +248,11 @@
 			isa = PBXGroup;
 			children = (
 				3759CD1A25A4A942008BE731 /* DeliveryCell.swift */,
+				377A043325D9B6CB0064BA5D /* Address.swift */,
+				371610F525B296980012D566 /* MyDeliveryCell.swift */,
 				374CC34124B7A5C900B239C7 /* Shift.swift */,
 				374CC34324B7A87C00B239C7 /* Delivery.swift */,
+				3716110425B3D84C0012D566 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -534,17 +549,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				3759469F24BE25E600BAAB1A /* LoginFormViewController.swift in Sources */,
+				3716110525B3D84C0012D566 /* Profile.swift in Sources */,
 				3759CD2025A4B2AE008BE731 /* DirectionsViewController.swift in Sources */,
 				3759CD1B25A4A942008BE731 /* DeliveryCell.swift in Sources */,
 				3759469D24BE25D500BAAB1A /* SignUpFormViewController.swift in Sources */,
 				374CC33C24B7A4B200B239C7 /* ProfileViewController.swift in Sources */,
 				370B7A8124AFBA5B00241A51 /* HomeViewController.swift in Sources */,
 				374CC34024B7A50D00B239C7 /* DeliveryViewController.swift in Sources */,
+				3716110025B3C3DF0012D566 /* ShiftViewController.swift in Sources */,
+				371610F625B296980012D566 /* MyDeliveryCell.swift in Sources */,
 				374CC33724B7A3F800B239C7 /* WelcomeViewController.swift in Sources */,
+				371610FB25B340D10012D566 /* PastShiftsViewController.swift in Sources */,
 				374CC34224B7A5C900B239C7 /* Shift.swift in Sources */,
 				374CC33E24B7A50100B239C7 /* DeliveriesViewController.swift in Sources */,
 				370B7A7D24AFBA5B00241A51 /* AppDelegate.swift in Sources */,
 				371610F125B1FE690012D566 /* CompleteDeliveryViewController.swift in Sources */,
+				377A043425D9B6CB0064BA5D /* Address.swift in Sources */,
 				370B7A7F24AFBA5B00241A51 /* SceneDelegate.swift in Sources */,
 				37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */,
 				374CC34424B7A87C00B239C7 /* Delivery.swift in Sources */,

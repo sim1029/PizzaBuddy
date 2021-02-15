@@ -27,6 +27,7 @@ class DirectionsViewController: UIViewController, UITableViewDelegate, UITableVi
     let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 40.692960, longitude: -79.998080))
     
     var stop = Delivery()
+    var shift = Shift()
     
     var directions: [String]?
     var source = MKMapItem()
@@ -42,18 +43,24 @@ class DirectionsViewController: UIViewController, UITableViewDelegate, UITableVi
         locationManager.requestWhenInUseAuthorization()
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways) {
             currentLoc = locationManager.location
+            source = MKMapItem(placemark: MKPlacemark(coordinate: currentLoc.coordinate))
         }
         let address = stop.address
         topLabel.text = address
-        source = MKMapItem(placemark: MKPlacemark(coordinate: currentLoc.coordinate))
+        
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) {
             placemarks, error in
-            let placemark = placemarks?.first
-            let location = placemark?.location
-            self.destination = MKMapItem(placemark: MKPlacemark(coordinate: location!.coordinate))
-            self.calculateDirections()
+            if placemarks != nil {
+                let placemark = placemarks?.first
+                let location = placemark?.location
+                self.destination = MKMapItem(placemark: MKPlacemark(coordinate: location!.coordinate))
+                self.calculateDirections()
+            } else {
+                self.directions = ["Error Fetching Directions"]
+                self.tableView.reloadData()
+            }
         }
 //        directions = ["Turn Left", "Turn Right", "You are lost"]
 //        tableView.reloadData()
@@ -99,6 +106,9 @@ class DirectionsViewController: UIViewController, UITableViewDelegate, UITableVi
             else if instruction.contains("right"){
                 cell.graphic.image = UIImage(named: "PizzaSlice")
             }
+            else if instruction == "Error Fetching Directions" {
+                cell.graphic.image = UIImage(named: "Error")
+            }
         }
         return cell
     }
@@ -107,6 +117,11 @@ class DirectionsViewController: UIViewController, UITableViewDelegate, UITableVi
         if segue.identifier == "toCompletion" {
             let destinationVC = segue.destination as! CompleteDeliveryViewController
             destinationVC.delivery = stop
+            destinationVC.shift = shift
+        } else {
+            let destinationVC = segue.destination as! MapViewController
+            destinationVC.tableView.reloadData()
+            
         }
     }
     

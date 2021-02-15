@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import MapKit
 import CoreLocation
+import CoreFoundation
 
 class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, MKLocalSearchCompleterDelegate, UISearchBarDelegate {
     
@@ -31,6 +32,8 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
     var shift: Shift?
     var address = ""
     
+    var date = Date()
+    let dateFormatter = DateFormatter()
     
     @IBOutlet weak var addressSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
@@ -39,6 +42,7 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         
         locationManager.requestWhenInUseAuthorization()
         if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways) {
@@ -54,6 +58,20 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
         
         shifts = realm.objects(Shift.self)
         shift = shifts?.last
+        
+        if let isWorking = shift?.working {
+            if !isWorking {
+                do {
+                    try realm.write {
+                        shift?.working = true
+                        shift?.lastSavedTime = CFAbsoluteTimeGetCurrent()
+                        shift?.dateCreated = dateFormatter.string(from: date)
+                    }
+                } catch {
+                    print("Error writing to shift: \(error)")
+                }
+            }
+        }
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -80,21 +98,46 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let newDelivery = Delivery()
-        newDelivery.address = address ?? ""
-        newDelivery.notes = notesTextField.text!
-        saveDelivery(delivery: newDelivery)
-    }
-    
-    func saveDelivery(delivery: Delivery) {
-        do {
-            try realm.write{
-                shift?.deliveries.append(delivery)
+        print(address)
+        let existingAddress = realm.objects(Address.self).filter("address = '\(address)'")
+        if let existingAddress = existingAddress.first {
+            do {
+                try realm.write {
+                    if notesTextField?.text != "" {
+                        existingAddress.notes = notesTextField?.text ?? ""
+                    }
+                    let newDelivery = Delivery()
+                    newDelivery.address = address ?? ""
+                    newDelivery.notes = existingAddress.notes
+                    newDelivery.timeCreated = CFAbsoluteTimeGetCurrent()
+                    realm.add(newDelivery)
+                    shift?.deliveries.append(newDelivery)
+                    existingAddress.deliveries.append(newDelivery)
+                }
+            } catch {
+                print("\(error)")
             }
-        } catch {
-            print("Error saving folds \(error)")
+        } else {
+            do {
+                try realm.write {
+                    let newAddress = Address()
+                    newAddress.address = address ?? ""
+                    newAddress.notes = notesTextField?.text ?? ""
+                    let newDelivery = Delivery()
+                    newDelivery.address = address ?? ""
+                    newDelivery.notes = newAddress.notes
+                    newDelivery.timeCreated = CFAbsoluteTimeGetCurrent()
+                    realm.add(newDelivery)
+                    shift?.deliveries.append(newDelivery)
+                    newAddress.deliveries.append(newDelivery)
+                    realm.add(newAddress)
+                }
+            } catch{
+                print("\(error)")
+            }
         }
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -143,6 +186,11 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         address = completerResults?[indexPath.row].title ?? ""
+        let selection = completerResults?[indexPath.row]
+        addressSearchBar.text = completerResults?[indexPath.row].title ?? ""
+        completerResults = [MKLocalSearchCompletion]()
+        completerResults?.append(selection ?? MKLocalSearchCompletion())
+        tableView.reloadData()
     }
     /*
     // MARK: - Navigation

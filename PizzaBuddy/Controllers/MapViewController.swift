@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import CoreFoundation
 
 class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -40,9 +41,9 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath) as! DeliveryCell
-        let delivery = activeDeliveries[indexPath.row]
+        let delivery = activeDeliveries[activeDeliveries.count - 1 - indexPath.row]
         cell.leftLabel.text = delivery.address
-        cell.rightLabel.text = ""
+        cell.rightLabel.text = "\(Int((CFAbsoluteTimeGetCurrent() - delivery.timeCreated) / 60)) min"
         cell.currentlySelected = false
         cell.backgroundColor = UIColor(named: "Red")
         
@@ -50,6 +51,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
     
     func loadDeliveries(){
+        activeDeliveries.removeAll()
         shifts = realm.objects(Shift.self)
         currentShift = shifts?.last
         deliveries = currentShift?.deliveries
@@ -69,13 +71,18 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if segue.identifier == "toDirections"{
             let destinationVC = segue.destination as! DirectionsViewController
             if let indexPath = tableView.indexPathForSelectedRow{
-                destinationVC.stop = activeDeliveries[indexPath.row] ?? Delivery()
+                destinationVC.stop = activeDeliveries[activeDeliveries.count - 1 - indexPath.row] ?? Delivery()
+                destinationVC.shift = currentShift ?? Shift()
             }
         }
     }
     
     @IBAction func unwindFromAddressView(_ unwindSegue: UIStoryboardSegue) {
         // Use data from the view controller which initiated the unwind segue
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadDeliveries()
     }
     
 }

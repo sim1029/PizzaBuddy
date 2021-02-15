@@ -14,4 +14,6 @@ class Shift: Object {
     @objc dynamic var working = false
     @objc dynamic var lastSavedTime : Float64 = 0.0
     @objc dynamic var tips = 0.0
+    @objc dynamic var total = 0.0
+    @objc dynamic var dateCreated : String = ""
 }

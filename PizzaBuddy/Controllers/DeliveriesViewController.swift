@@ -8,6 +8,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import CoreFoundation
 
 class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
         
@@ -19,43 +20,13 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     var deliveries: List<Delivery>?
     var shifts: Results<Shift>?
     var currentShift: Shift?
+    var myIndexPath: IndexPath?
+    
+    var currentTime = CFAbsoluteTimeGetCurrent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Seed the deliveries data base (DELETE WHEN DONE TESTING)
         loadDeliveries()
-        
-        if deliveries?.count ?? 0 == 0{
-            let newDelivery = Delivery()
-            newDelivery.address = "160 Brickyard Road"
-            newDelivery.notes = "Sample note 1"
-            newDelivery.complete = true
-            
-            let newDelivery1 = Delivery()
-            newDelivery1.address = "501 Potomac Ct"
-            newDelivery1.notes = "Sample note 2"
-            
-            let newDelivery2 = Delivery()
-            newDelivery2.address = "101 Snowcap Dr"
-            newDelivery2.notes = "Sample note 3"
-            
-            do {
-                try realm.write{
-                    currentShift?.deliveries.append(newDelivery)
-                    currentShift?.deliveries.append(newDelivery1)
-                    currentShift?.deliveries.append(newDelivery2)
-                }
-            } catch {
-                print("Error saving folds \(error)")
-            }
-            
-        }
-        
-        //STOP DELETING HERE! (But delete the comment yo)
-        loadDeliveries()
-
-        // Do any additional setup after loading the view
     }
     
     
@@ -64,15 +35,17 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath) as! SwipeTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DeliveryCell", for: indexPath) as! MyDeliveryCell
         
-            if let delivery = deliveries?[indexPath.row]{
+        if let delivery = deliveries?[deliveries!.count - 1 - indexPath.row]{
                 cell.textLabel?.text = delivery.address
                 cell.textLabel?.textColor = UIColor.white
                 if delivery.complete{
                     cell.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
+                    cell.rightLabel.text = "\(formatMoneyLabel(delivery.tip))"
                 } else {
                     cell.backgroundColor = #colorLiteral(red: 1, green: 0.3176470588, blue: 0.3176470588, alpha: 1)
+                    cell.rightLabel.text = "\(Int((currentTime - delivery.timeCreated) / 60)) min"
                 }
             }
         
@@ -84,9 +57,13 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         if orientation == .left{
             let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
                 // Update model with deletion
-                if let delivery = self.currentShift?.deliveries[indexPath.row] {
+                if let delivery = self.currentShift?.deliveries[self.deliveries!.count - 1 - indexPath.row] {
                     do {
                         try self.realm.write{
+                            if delivery.complete {
+                                self.currentShift?.tips -= delivery.tip
+                                self.currentShift?.total -= delivery.tip
+                            }
                             self.realm.delete(delivery)
                         }
                         self.loadDeliveries()
@@ -100,12 +77,16 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
             
             return [deleteAction]
         } else{
-            if let delivery = self.currentShift?.deliveries[indexPath.row] {
+            if let delivery = self.currentShift?.deliveries[self.deliveries!.count - 1 - indexPath.row] {
                 if delivery.complete{
                     let resetAction = SwipeAction(style: .default, title: "Reset") { (action, indexPath) in
                         do {
                             try self.realm.write{
+                                delivery.deliveryTime = 0
+                                self.currentShift?.tips -= delivery.tip
+                                self.currentShift?.total -= delivery.tip
                                 delivery.complete = false
+                                delivery.tip = 0
                             }
                             self.loadDeliveries()
                         } catch {
@@ -118,14 +99,16 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
                     return [resetAction]
                 } else {
                     let completeAction = SwipeAction(style: .default, title: "Complete") { (action, indexPath) in
-                        do {
-                            try self.realm.write {
-                                delivery.complete = true
-                            }
-                            self.loadDeliveries()
-                        } catch {
-                            print("Error saving folds \(error)")
-                        }
+                        self.myIndexPath = indexPath
+                        self.performSegue(withIdentifier: "toCompletion", sender: nil)
+//                        do {
+//                            try self.realm.write {
+//                                delivery.complete = true
+//                            }
+//                            self.loadDeliveries()
+//                        } catch {
+//                            print("Error saving folds \(error)")
+//                        }
                     }
                     completeAction.image = UIImage(named: "complete")
                     completeAction.backgroundColor = #colorLiteral(red: 0.568627451, green: 0.7411764706, blue: 0.2274509804, alpha: 1)
@@ -167,6 +150,12 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         numberOfDeliveriesLabel.text = baseString
     }
     
+    func formatMoneyLabel(_ money: Double) -> String {
+        var moneyString = "$"
+        moneyString += String(format: "%.2f", money)
+        return moneyString
+    }
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -174,10 +163,47 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         if segue.identifier == "toDelivery"{
             let destinationVC = segue.destination as! DeliveryViewController
             if let indexPath = tableView.indexPathForSelectedRow{
-                destinationVC.selectedDelivery = currentShift?.deliveries[indexPath.row]
+                destinationVC.selectedDelivery = currentShift?.deliveries[deliveries!.count - 1 - indexPath.row]
             }
+        }
+        if segue.identifier == "toCompletion" {
+            if let indexPath = myIndexPath {
+                let destinationVC = segue.destination as! CompleteDeliveryViewController
+                destinationVC.delivery = currentShift?.deliveries[deliveries!.count - 1 - indexPath.row] ?? Delivery()
+                destinationVC.shift = currentShift ?? Shift()
+            }
+            
         }
     }
 
+}
+
+// Search bar methods
+extension DeliveriesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSearch(for: searchBar.text!)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count != 0 {
+            performSearch(for: searchBar.text!)
+        } else {
+            loadDeliveries()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+    
+    func performSearch(for text: String) {
+        deliveries = currentShift?.deliveries
+        if let myDeliveries = deliveries?.filter("address CONTAINS[cd] %@", text) {
+            deliveries = List<Delivery>()
+            for delivery in myDeliveries {
+                deliveries?.append(delivery)
+            }
+        }
+        tableView.reloadData()
+    }
 }
 
