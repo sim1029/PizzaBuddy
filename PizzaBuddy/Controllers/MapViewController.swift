@@ -71,7 +71,7 @@ class MapViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         if segue.identifier == "toDirections"{
             let destinationVC = segue.destination as! DirectionsViewController
             if let indexPath = tableView.indexPathForSelectedRow{
-                destinationVC.stop = activeDeliveries[activeDeliveries.count - 1 - indexPath.row] ?? Delivery()
+                destinationVC.stop = activeDeliveries[activeDeliveries.count - 1 - indexPath.row] 
                 destinationVC.shift = currentShift ?? Shift()
             }
         }

@@ -304,7 +304,7 @@
                                 </constraints>
                                 <state key="normal" backgroundImage="plusAsset 18"/>
                                 <connections>
-                                    <segue destination="Xah-Of-Ong" kind="presentation" animates="NO" modalPresentationStyle="fullScreen" id="mwM-40-bcw"/>
+                                    <action selector="goToNewDelivery:" destination="x5P-0O-Ln6" eventType="touchUpInside" id="a0n-hy-mHA"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ymM-U0-m8H">
@@ -364,7 +364,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Deliveries (##)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="PAV-VC-oxU">
-                                <rect key="frame" x="102.33333333333333" y="52" width="185.66666666666669" height="26"/>
+                                <rect key="frame" x="108.33333333333333" y="52" width="173.33333333333337" height="26"/>
                                 <fontDescription key="fontDescription" name="VarelaRound-Regular" family="Varela Round" pointSize="22"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -391,6 +391,7 @@
                         <outlet property="numberOfDeliveriesLabel" destination="PAV-VC-oxU" id="Xn7-AV-SpT"/>
                         <outlet property="tableView" destination="ymM-U0-m8H" id="E3y-L3-z0f"/>
                         <segue destination="ELX-nd-wXj" kind="presentation" identifier="toCompletion" modalPresentationStyle="fullScreen" id="RZy-Gw-cqS"/>
+                        <segue destination="Xah-Of-Ong" kind="presentation" identifier="toNewAddress" animates="NO" modalPresentationStyle="fullScreen" id="QJa-ve-2vN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hiy-6B-9fb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1311,7 +1312,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Shifts (##)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="1az-pk-mUV">
-                                <rect key="frame" x="122.66666666666667" y="52" width="144.66666666666663" height="26"/>
+                                <rect key="frame" x="128" y="52" width="134.33333333333337" height="26"/>
                                 <fontDescription key="fontDescription" name="VarelaRound-Regular" family="Varela Round" pointSize="22"/>
                                 <color key="textColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1440,11 +1441,11 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="zEv-Hv-7jG"/>
-        <segue reference="pcy-xR-Yft"/>
+        <segue reference="RZy-Gw-cqS"/>
         <segue reference="g2O-PL-iJo"/>
-        <segue reference="xkj-ZO-mB4"/>
-        <segue reference="c7a-7I-3jI"/>
-        <segue reference="Blo-MY-oau"/>
+        <segue reference="f2E-gn-sHV"/>
+        <segue reference="nhr-t0-76O"/>
+        <segue reference="GZc-El-iWY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LargeButtonAsset 2" width="500" height="136"/>

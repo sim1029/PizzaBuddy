@@ -6,8 +6,6 @@ target 'PizzaBuddy' do
   use_frameworks!
 
   # Pods for PizzaBuddy
-  pod 'GoogleMaps'
-  pod 'GooglePlaces'
   pod 'RealmSwift'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'

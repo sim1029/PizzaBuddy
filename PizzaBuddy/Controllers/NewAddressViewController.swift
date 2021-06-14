@@ -44,10 +44,15 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
         super.viewDidLoad()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         
-        locationManager.requestWhenInUseAuthorization()
-        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse || CLLocationManager.authorizationStatus() == .authorizedAlways) {
+        while CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             currentLoc = locationManager.location
             searchRegion = MKCoordinateRegion(center: currentLoc.coordinate, latitudinalMeters: 8046.72, longitudinalMeters: 8046.72)
+            searchCompleter = MKLocalSearchCompleter()
+            searchCompleter?.delegate = self
+            searchCompleter?.region = MKCoordinateRegion(center: currentLoc.coordinate, latitudinalMeters: 48280.3, longitudinalMeters: 48280.3)
         }
 
         // Do any additional setup after loading the view.
@@ -77,12 +82,6 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
         tableView.dataSource = self
         tableView.allowsSelection = true
         tableView.reloadData()
-        
-        // Create new search completer and update the delegate
-        searchCompleter = MKLocalSearchCompleter()
-        searchCompleter?.delegate = self
-        searchCompleter?.region = MKCoordinateRegion(center: currentLoc.coordinate, latitudinalMeters: 48280.3, longitudinalMeters: 48280.3)
-        
         addressSearchBar.delegate = self
     }
     
@@ -98,7 +97,6 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print(address)
         let existingAddress = realm.objects(Address.self).filter("address = '\(address)'")
         if let existingAddress = existingAddress.first {
             do {
@@ -107,7 +105,7 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
                         existingAddress.notes = notesTextField?.text ?? ""
                     }
                     let newDelivery = Delivery()
-                    newDelivery.address = address ?? ""
+                    newDelivery.address = address
                     newDelivery.notes = existingAddress.notes
                     newDelivery.timeCreated = CFAbsoluteTimeGetCurrent()
                     realm.add(newDelivery)
@@ -121,10 +119,10 @@ class NewAddressViewController: UIViewController, UITextFieldDelegate, UITableVi
             do {
                 try realm.write {
                     let newAddress = Address()
-                    newAddress.address = address ?? ""
+                    newAddress.address = address
                     newAddress.notes = notesTextField?.text ?? ""
                     let newDelivery = Delivery()
-                    newDelivery.address = address ?? ""
+                    newDelivery.address = address
                     newDelivery.notes = newAddress.notes
                     newDelivery.timeCreated = CFAbsoluteTimeGetCurrent()
                     realm.add(newDelivery)

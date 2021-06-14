@@ -35,7 +35,7 @@
 		3759CD1B25A4A942008BE731 /* DeliveryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759CD1A25A4A942008BE731 /* DeliveryCell.swift */; };
 		3759CD2025A4B2AE008BE731 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3759CD1F25A4B2AE008BE731 /* DirectionsViewController.swift */; };
 		377A043425D9B6CB0064BA5D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377A043325D9B6CB0064BA5D /* Address.swift */; };
-		37D74DC424CCCC56006DD6C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */; };
+		377A049725DA08AE0064BA5D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 377A049625DA08AE0064BA5D /* GoogleService-Info.plist */; };
 		37D74DC624CE6443006DD6C5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D74DC524CE6443006DD6C5 /* MapKit.framework */; };
 		37F6F01924B3C5C70038154A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F6F01824B3C5C70038154A /* MapViewController.swift */; };
 		37FC45D224C479080047C160 /* NewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FC45D124C479080047C160 /* NewAddressViewController.swift */; };
@@ -95,7 +95,8 @@
 		3759CD1A25A4A942008BE731 /* DeliveryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeliveryCell.swift; path = PizzaBuddy/Views/DeliveryCell.swift; sourceTree = SOURCE_ROOT; };
 		3759CD1F25A4B2AE008BE731 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DirectionsViewController.swift; path = PizzaBuddy/Views/DirectionsViewController.swift; sourceTree = SOURCE_ROOT; };
 		377A043325D9B6CB0064BA5D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		377A049225DA06600064BA5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "/Users/simonschueller/Programming/IOS/Projects/PizzaBuddy/PizzaBuddy/PizzaBuddy/GoogleService-Info.plist"; sourceTree = "<absolute>"; };
+		377A049625DA08AE0064BA5D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		37D74DC524CE6443006DD6C5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		37F6F01824B3C5C70038154A /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		37FC45D124C479080047C160 /* NewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressViewController.swift; sourceTree = "<group>"; };
@@ -174,14 +175,15 @@
 		370B7A7B24AFBA5B00241A51 /* PizzaBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				377A049625DA08AE0064BA5D /* GoogleService-Info.plist */,
 				370B7A7C24AFBA5B00241A51 /* AppDelegate.swift */,
 				370B7A7E24AFBA5B00241A51 /* SceneDelegate.swift */,
 				374CC33A24B7A43400B239C7 /* Model */,
 				374CC33924B7A42600B239C7 /* Views */,
 				374CC33824B7A41A00B239C7 /* Controllers */,
 				370B7A8524AFBA5C00241A51 /* Assets.xcassets */,
-				37D74DC324CCCC56006DD6C5 /* GoogleService-Info.plist */,
 				370B7A8A24AFBA5C00241A51 /* Info.plist */,
+				377A049225DA06600064BA5D /* GoogleService-Info.plist */,
 				370B7AB024AFBFCC00241A51 /* Resources */,
 			);
 			path = PizzaBuddy;
@@ -281,7 +283,6 @@
 				370B7A7524AFBA5B00241A51 /* Sources */,
 				370B7A7624AFBA5B00241A51 /* Frameworks */,
 				370B7A7724AFBA5B00241A51 /* Resources */,
-				6010443069DA0A2C9FCDD2E9 /* [CP] Copy Pods Resources */,
 				90006F3551106D3CD85E3EED /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -320,7 +321,6 @@
 				370B7A9624AFBA5C00241A51 /* Sources */,
 				370B7A9724AFBA5C00241A51 /* Frameworks */,
 				370B7A9824AFBA5C00241A51 /* Resources */,
-				3F44BBA8C268D49EA9DE5823 /* [CP] Copy Pods Resources */,
 				D8B66CA2892CF0CD23288ED2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -386,7 +386,7 @@
 				370B7A8424AFBA5B00241A51 /* Main.storyboard in Resources */,
 				370B7AB824B0DEED00241A51 /* LargeButtonAsset 2.svg in Resources */,
 				370B7AB624B0DE7900241A51 /* pizza.svg in Resources */,
-				37D74DC424CCCC56006DD6C5 /* GoogleService-Info.plist in Resources */,
+				377A049725DA08AE0064BA5D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,40 +449,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3F44BBA8C268D49EA9DE5823 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy-PizzaBuddyUITests/Pods-PizzaBuddy-PizzaBuddyUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy-PizzaBuddyUITests/Pods-PizzaBuddy-PizzaBuddyUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy-PizzaBuddyUITests/Pods-PizzaBuddy-PizzaBuddyUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6010443069DA0A2C9FCDD2E9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy/Pods-PizzaBuddy-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy/Pods-PizzaBuddy-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PizzaBuddy/Pods-PizzaBuddy-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		751AA398727211B4A8D01D8B /* [CP] Check Pods Manifest.lock */ = {

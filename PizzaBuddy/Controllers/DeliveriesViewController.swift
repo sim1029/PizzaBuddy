@@ -9,6 +9,7 @@ import UIKit
 import RealmSwift
 import SwipeCellKit
 import CoreFoundation
+import CoreLocation
 
 class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwipeTableViewCellDelegate {
         
@@ -23,7 +24,8 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
     var myIndexPath: IndexPath?
     
     var currentTime = CFAbsoluteTimeGetCurrent()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDeliveries()
@@ -176,6 +178,12 @@ class DeliveriesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
+    @IBAction func goToNewDelivery(_ sender: UIButton) {
+        if !(CLLocationManager.authorizationStatus() == .denied){
+            performSegue(withIdentifier: "toNewAddress", sender: UIButton())
+        }
+        print("DENIED")
+    }
 }
 
 // Search bar methods
